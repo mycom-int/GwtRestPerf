@@ -2,7 +2,7 @@
 
 ## Goal
 
-Compare **performance** of [RestyGWT](http://restygwt.fusesource.org/) and pure [GWT](http://www.gwtproject.org/) for rest calls.
+Compare **performance** of [RestyGWT](http://restygwt.fusesource.org/) and pure [GWT](http://www.gwtproject.org/) for R.E.S.T. calls.
 
 ### Topics
 
