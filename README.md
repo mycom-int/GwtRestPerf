@@ -13,4 +13,6 @@ Compare performance of RestyGWT and pure GWT for rest calls.
 
 [RestyGWT](https://github.com/chirino/resty-gwt) github page
 
+[HTTP request in GWT] (http://www.gwtproject.org/doc/latest/DevGuideServerCommunication.html#DevGuideHttpRequests)
+
 
