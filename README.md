@@ -2,7 +2,7 @@
 
 ## Goal
 
-Compare **performance** of RestyGWT and pure GWT for rest calls.
+Compare **performance** of [RestyGWT][1] and pure [GWT][2] for rest calls.
 
 ### Topics
 
@@ -16,4 +16,5 @@ Compare **performance** of RestyGWT and pure GWT for rest calls.
 
 [HTTP request in GWT] (http://www.gwtproject.org/doc/latest/DevGuideServerCommunication.html#DevGuideHttpRequests)
 
-
+[1] (http://restygwt.fusesource.org/)
+[2] (http://www.gwtproject.org/)
