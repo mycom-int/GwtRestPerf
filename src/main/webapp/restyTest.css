@@ -1,0 +1,14 @@
+/** Add css rules here for your application. */
+a{
+		cursor: pointer;
+}
+body{
+		background: #253565;
+}
+#loading {
+		color: white;
+		background: url(img/ajax-loader.gif) no-repeat right;
+		height: 32px;
+		padding-right: 32px;
+		width:50%;
+}
