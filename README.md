@@ -2,7 +2,15 @@
 
 ## Goal
 
-Compare performance of RestyGWT rest call and pure GWT rest calls
+Compare performance of RestyGWT and pure GWT for rest calls.
 
-See [RestyGWT](https://github.com/chirino/resty-gwt) page for details.   
+### Topics
+
+1. Serialization/deserialisation speed
+2. Number of simultaneous calls supported
+
+## Links
+
+[RestyGWT](https://github.com/chirino/resty-gwt) github page
+
 
