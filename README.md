@@ -1,7 +1,8 @@
-GwtRestPerf
-===========
+# GwtRestPerf
 
+## Goal
 
-GWT Rest Client Performance Survey
+Compare performance of RestyGWT rest call and pure GWT rest calls
 
-a project for me to study how to tune simultanious Restful service request in a GWT project.
+See [RestyGWT](https://github.com/chirino/resty-gwt) page for details.   
+
