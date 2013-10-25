@@ -2,12 +2,13 @@
 
 ## Goal
 
-Compare performance of RestyGWT and pure GWT for rest calls.
+Compare **performance** of RestyGWT and pure GWT for rest calls.
 
 ### Topics
 
 1. Serialization/deserialisation speed
 2. Number of simultaneous calls supported
+3. Support for Jax-rs annotations
 
 ## Links
 
