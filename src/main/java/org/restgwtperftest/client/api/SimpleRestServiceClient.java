@@ -11,7 +11,7 @@ import org.fusesource.restygwt.client.RestService;
 import org.restgwtperftest.shared.model.BigBean;
 import org.restgwtperftest.shared.model.ServiceConsts;
 
-@Path(ServiceConsts.SERVICE_PATH_V1_SLOW)
+@Path(ServiceConsts.SERVICE_PATH_CONTEXT_PREFIX+ServiceConsts.SERVICE_PATH_V1_SLOW)
 public interface SimpleRestServiceClient extends RestService {
 	@GET
 	@Path(ServiceConsts.RELATIVE_PATH_HELLO)
