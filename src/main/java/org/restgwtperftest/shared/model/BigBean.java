@@ -1,4 +1,4 @@
-package org.restgwtperftest.service.rest.v1;
+package org.restgwtperftest.shared.model;
 
 public class BigBean {
 	private String str1;

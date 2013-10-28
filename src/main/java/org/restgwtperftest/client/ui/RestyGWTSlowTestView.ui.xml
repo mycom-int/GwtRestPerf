@@ -1,0 +1,9 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+		xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<g:Button ui:field="startBtn" text="Start"/>
+	<g:Label text="Threads:"/>
+	<g:TextBox ui:field="threadAmountTxb" text="10"/>
+	<g:Label text="Bean amount for each request:"/>
+	<g:TextBox ui:field="beanAmountTxb" text="10"/>
+</ui:UiBinder>

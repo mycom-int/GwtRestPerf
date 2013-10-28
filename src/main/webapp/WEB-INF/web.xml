@@ -3,8 +3,7 @@
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
-	<!-- <description>GWT Rest Client Performance Survey</description>  -->
-	<!-- filter all URLs through Guice Servlet -->
+	<!-- filter all URLs through Guice Servlet --><!-- <description>GWT Rest Client Performance Survey</description>  -->
 	<filter>
 		<filter-name>guiceFilter</filter-name>
 		<filter-class>com.google.inject.servlet.GuiceFilter</filter-class>

@@ -1,0 +1,7 @@
+ .background {
+	gwt-image: 'background';
+	background-size: cover;
+	background-color: #253565;
+	width: auto;
+	height: auto;
+}
