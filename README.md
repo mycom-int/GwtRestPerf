@@ -1,7 +1,18 @@
-GwtRestPerf
-===========
+# GwtRestPerf
 
+## Goal
 
-GWT Rest Client Performance Survey
+Compare **performance** of [RestyGWT](http://restygwt.fusesource.org/) and pure [GWT](http://www.gwtproject.org/) for R.E.S.T. calls.
 
-a project for me to study how to tune simultanious Restful service request in a GWT project.
+### Topics
+
+1. Serialization/deserialisation speed
+2. Number of simultaneous calls supported
+3. Support for JAX-RS annotations ?
+
+## Other Links
+
+[RestyGWT](https://github.com/chirino/resty-gwt) github page
+
+[HTTP request in GWT] (http://www.gwtproject.org/doc/latest/DevGuideServerCommunication.html#DevGuideHttpRequests)
+
