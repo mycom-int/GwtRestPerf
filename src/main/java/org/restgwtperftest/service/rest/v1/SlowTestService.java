@@ -31,6 +31,17 @@ public class SlowTestService {
 	      return "Hello world!";
 	   }
 	   @GET
+	   @Path(ServiceConsts.RELATIVE_PATH_LONG_OPERATION+"/{sleep}")
+	   public void doLongOperation(@PathParam("sleep")int sleepMillis)
+	   {
+		   try {
+			Thread.sleep(sleepMillis);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	   }
+	   
+	   @GET
 	   @Path("/{amount}")
 	   public List<BigBean> findAll(@PathParam("amount")int amount)
 	   {
@@ -38,14 +49,11 @@ public class SlowTestService {
 		   BigBean bean;
 		   for(int i=amount;i>0;i--)
 		   {
-			   bean = new BigBean(
-					   UUID.randomUUID().toString(),
-					   UUID.randomUUID().toString(),
-					   UUID.randomUUID().toString(),
-					   UUID.randomUUID().toString());
+			   bean = new BigBean(UUID.randomUUID().toString());
 			   arr.add(bean);
 		   }
 		   return arr;
 	   }
 
+	   
 }

@@ -18,6 +18,10 @@ public interface SimpleRestServiceClient extends RestService {
 	void sayHello(MethodCallback<String> callback);
 
 	@GET
+	@Path(ServiceConsts.RELATIVE_PATH_LONG_OPERATION+"/{sleep}")
+	void doLongOperation(@PathParam("sleep")int sleepMillis, MethodCallback<Void> vOID);
+
+	@GET
 	@Path("/{amount}")
 	void get(@PathParam("amount") int amount,
 			MethodCallback<List<BigBean>> callback);

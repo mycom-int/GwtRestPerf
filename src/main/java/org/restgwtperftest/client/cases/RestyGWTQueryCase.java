@@ -25,7 +25,7 @@ public class RestyGWTQueryCase implements Case{
 			Scheduler.get().scheduleFixedPeriod(new RepeatingCommand() {
 				@Override
 				public boolean execute() {
-					System.out.println(">>> start Service Call["+idx+"] "
+					System.out.println(">>> RestGWT getAllBigBeans["+idx+"] "
 							+ "threadAmount:"+threadAmount+", beanAmount:"+beanAmount);
 					simpleClient.get(
 							beanAmount,
@@ -33,10 +33,9 @@ public class RestyGWTQueryCase implements Case{
 								@Override
 								public void onSuccess(Method method,
 										List<BigBean> beans) {
-									System.out.println("success Loaded idx["+idx
+									System.out.println("success getAllBigBeans idx["+idx
 											+ "]: " + beans.size());
 								}
-
 								@Override
 								public void onFailure(Method method,
 										Throwable exception) {
@@ -48,10 +47,35 @@ public class RestyGWTQueryCase implements Case{
 			}, 300);
 		}
 	}
-
+	@Override
+	public void doLongOperation(int threadAmount, final int sleepMillis, int schPeriod) {
+		for (int i = threadAmount; i >0; i--) {
+			final int idx = i;
+			Scheduler.get().scheduleFixedPeriod(new RepeatingCommand() {
+				@Override
+				public boolean execute() {
+					System.out.println(">>> RestGWT: doLongOp["+idx+"] "
+							+ "sleepMillis:"+sleepMillis);
+					simpleClient.doLongOperation(sleepMillis, new MethodCallback<Void>(){
+						@Override
+						public void onSuccess(Method method, Void response) {
+							System.out.println("success doLongOp idx["+idx
+									+ "] ");
+						}
+						@Override
+						public void onFailure(Method method, Throwable exception) {
+							System.out.println("ERROR in thread["+idx+"], "+exception);
+						}
+					});
+					return false;
+				}
+			}, 300);
+		}		
+	}
 	@Override
 	public String getName() {
 		return "Using RestyGWT client";
 	}
+
 
 }
