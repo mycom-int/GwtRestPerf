@@ -10,7 +10,7 @@ import org.restgwtperftest.client.api.SimpleRestServiceClient;
 import org.restgwtperftest.shared.model.BigBean;
 
 import com.google.gwt.core.client.Scheduler;
-import com.google.gwt.core.client.Scheduler.RepeatingCommand;
+import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.inject.Inject;
 
 public class RestyGWTQueryCase implements Case{
@@ -22,38 +22,39 @@ public class RestyGWTQueryCase implements Case{
 	public void findBigBeans(final int threadAmount, final int beanAmount,final int schPeriod) {
 		for (int i = threadAmount; i >0; i--) {
 			final int idx = i;
-			Scheduler.get().scheduleFixedPeriod(new RepeatingCommand() {
+			Scheduler.get().scheduleDeferred(new ScheduledCommand(){
 				@Override
-				public boolean execute() {
+				public void execute() {
 					System.out.println(">>> RestGWT getAllBigBeans["+idx+"] "
 							+ "threadAmount:"+threadAmount+", beanAmount:"+beanAmount);
-					simpleClient.get(
-							beanAmount,
-							new MethodCallback<List<BigBean>>() {
-								@Override
-								public void onSuccess(Method method,
-										List<BigBean> beans) {
-									System.out.println("success getAllBigBeans idx["+idx
-											+ "]: " + beans.size());
-								}
-								@Override
-								public void onFailure(Method method,
-										Throwable exception) {
-									System.out.println("ERROR in thread["+idx+"], "+exception);
-								}
-							});
-					return false;
+					
+					simpleClient.getAllBeans(
+						beanAmount,
+						new MethodCallback<List<BigBean>>() {
+							@Override
+							public void onSuccess(Method method,
+									List<BigBean> beans) {
+								System.out.println("success getAllBigBeans idx["+idx
+										+ "], beans.size():" + beans.size());
+							}
+							@Override
+							public void onFailure(Method method,
+									Throwable exception) {
+								System.out.println("ERROR in thread["+idx+"], "+exception);
+							}
+						});
 				}
-			}, 300);
+				
+			});
 		}
 	}
 	@Override
 	public void doLongOperation(int threadAmount, final int sleepMillis, int schPeriod) {
 		for (int i = threadAmount; i >0; i--) {
 			final int idx = i;
-			Scheduler.get().scheduleFixedPeriod(new RepeatingCommand() {
+			Scheduler.get().scheduleDeferred(new ScheduledCommand(){
 				@Override
-				public boolean execute() {
+				public void execute() {
 					System.out.println(">>> RestGWT: doLongOp["+idx+"] "
 							+ "sleepMillis:"+sleepMillis);
 					simpleClient.doLongOperation(sleepMillis, new MethodCallback<Void>(){
@@ -67,9 +68,8 @@ public class RestyGWTQueryCase implements Case{
 							System.out.println("ERROR in thread["+idx+"], "+exception);
 						}
 					});
-					return false;
 				}
-			}, 300);
+			});
 		}		
 	}
 	@Override

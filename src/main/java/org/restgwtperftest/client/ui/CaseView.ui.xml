@@ -4,7 +4,7 @@
 	<g:VerticalPanel>
 		<g:HorizontalPanel>
 			<g:Label ui:field="caseNameLb"/>
-			<g:Label text=" Threads:" />
+			<g:Label text=" _Querys:" />
 			<g:TextBox ui:field="threadAmountTxb" text="10" />
 		</g:HorizontalPanel>
 		<g:HorizontalPanel>

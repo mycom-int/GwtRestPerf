@@ -7,7 +7,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
 import org.fusesource.restygwt.client.MethodCallback;
+import org.fusesource.restygwt.client.Options;
 import org.fusesource.restygwt.client.RestService;
+import org.restgwtperftest.client.QueuedResponseDispatcher;
 import org.restgwtperftest.shared.model.BigBean;
 import org.restgwtperftest.shared.model.ServiceConsts;
 
@@ -24,5 +26,12 @@ public interface SimpleRestServiceClient extends RestService {
 	@GET
 	@Path("/{amount}")
 	void get(@PathParam("amount") int amount,
+			MethodCallback<List<BigBean>> callback);
+	
+	
+	@GET
+	@Path("/{amount}")
+	@Options(dispatcher=QueuedResponseDispatcher.class)
+	void getAllBeans(@PathParam("amount") int amount,
 			MethodCallback<List<BigBean>> callback);
 }

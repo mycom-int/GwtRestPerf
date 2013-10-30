@@ -8,6 +8,8 @@
 	<inherits name='com.google.gwt.activity.Activity'/>
 	<inherits name='com.google.gwt.place.Place'/>
 	<inherits name='com.google.gwt.i18n.I18N'/>
+	<inherits name="com.google.gwt.json.JSON" />
+    <inherits name='com.google.gwt.jsonp.Jsonp' />
 	<inherits name='com.google.gwt.resources.Resources'/>
 	<inherits name='com.google.gwt.user.Debug'/>
 
