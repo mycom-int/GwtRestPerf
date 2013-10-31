@@ -21,19 +21,19 @@ public class QueuedResponseDispatcher implements Dispatcher {
 	public Request send(Method method, RequestBuilder builder)
 			throws RequestException {
 		RequestCallback callback ;
-//		callback = new QueuedRequestCallbackWrapper(builder.getCallback(), taskQueue);
-		callback = new DeferredRequestCallbackWrapper(builder.getCallback(), Scheduler.get());
+		callback = new QueuedResponseCallbackWrapper(builder.getCallback(), taskQueue);
+//		callback = new DeferredRequestCallbackWrapper(builder.getCallback(), Scheduler.get());
 		//TODO wrap callback with delayed process
 		Request req = builder.sendRequest(builder.getRequestData(), callback);
 		return req;
 	}
 }
-class QueuedRequestCallbackWrapper implements RequestCallback
+class QueuedResponseCallbackWrapper implements RequestCallback
 {
 	private RequestCallback callback;
 	private TaskQueue taskQueue;
 	
-	public QueuedRequestCallbackWrapper(RequestCallback callback, TaskQueue taskQueue) {
+	public QueuedResponseCallbackWrapper(RequestCallback callback, TaskQueue taskQueue) {
 		this.callback = callback;
 		this.taskQueue = taskQueue;
 	}
@@ -41,6 +41,7 @@ class QueuedRequestCallbackWrapper implements RequestCallback
 	@Override
 	public void onResponseReceived(final Request request, final Response response) {
 		System.out.println(">>>>>>>>>>>>>>>>>>> ResponseQueuedDispatcher::onResponseReceived, taskQueue"+taskQueue);
+//		response.getText();
 		taskQueue.add(new Task(){
 			@Override
 			public void run() {
@@ -59,6 +60,13 @@ class QueuedRequestCallbackWrapper implements RequestCallback
 		});
 	}
 }
+
+
+
+
+
+
+
 class DeferredRequestCallbackWrapper implements RequestCallback{
 	private RequestCallback callback;
 	private Scheduler scheduler;

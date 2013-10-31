@@ -38,17 +38,17 @@ public class TaskQueue implements RepeatingCommand {
 	public boolean execute() {
 		long millis = System.currentTimeMillis();
 		try{
-			if (!queue.isEmpty()) {
+			if (queue.isEmpty()) {
+				started = false;
+			}else{
 				Task w = queue.remove();
 				System.out.println("task: "+ w);
 					// TODO add additional safety guard if RestGWT doesn't impl any
 					// timeout mechanism. ||
 					// timestamp > 10000 ms, force trigger failure.
 				w.run();
-				return true;
 			}
-			started = false;
-			return false;			
+			return started;			
 		}
 		finally
 		{

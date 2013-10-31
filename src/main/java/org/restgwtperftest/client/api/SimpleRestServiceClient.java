@@ -14,6 +14,7 @@ import org.restgwtperftest.shared.model.BigBean;
 import org.restgwtperftest.shared.model.ServiceConsts;
 
 @Path(ServiceConsts.SERVICE_PATH_CONTEXT_PREFIX+ServiceConsts.SERVICE_PATH_V1_SLOW)
+@Options(dispatcher=QueuedResponseDispatcher.class)
 public interface SimpleRestServiceClient extends RestService {
 	@GET
 	@Path(ServiceConsts.RELATIVE_PATH_HELLO)
@@ -25,13 +26,6 @@ public interface SimpleRestServiceClient extends RestService {
 
 	@GET
 	@Path("/{amount}")
-	void get(@PathParam("amount") int amount,
-			MethodCallback<List<BigBean>> callback);
-	
-	
-	@GET
-	@Path("/{amount}")
-	@Options(dispatcher=QueuedResponseDispatcher.class)
 	void getAllBeans(@PathParam("amount") int amount,
 			MethodCallback<List<BigBean>> callback);
 }
